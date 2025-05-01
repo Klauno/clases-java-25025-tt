@@ -1,34 +1,22 @@
 package techlab.clases.c5;
 
 public class Cliente {
-    // Atributos
-    private String nombre;
-    private String email;
+    String nombre;
+    String email;
+    int antiguedad;
 
-    // Constructor que recibe nombre y email
-    public Cliente(String nombre, String email) {
+    // Constructores
+    public Cliente(){}
+
+    public Cliente(String nombre, String email){
         this.nombre = nombre;
         this.email = email;
+        this.antiguedad = 1;
     }
 
-    // Método para mostrar información del cliente
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Email: " + email);
-    }
-
-    // Método main para crear clientes y mostrarlos
-    public static void main(String[] args) {
-        // Crear varios clientes usando el constructor
-        Cliente cliente1 = new Cliente("Silvia Gómez", "silvia.gomez@example.com");
-        Cliente cliente2 = new Cliente("Matías Fernández", "matias.fernandez@example.com");
-        Cliente cliente3 = new Cliente("Sabrina López", "sabrina.lopez@example.com");
-
-        // Mostrar información de cada cliente
-        cliente1.mostrarInformacion();
-        System.out.println();
-        cliente2.mostrarInformacion();
-        System.out.println();
-        cliente3.mostrarInformacion();
+    // metodos
+    void mostrarDatos(){
+        System.out.println("Informe:");
+        System.out.printf("El cliente %s tiene registrado como email la siguiente direccion: %s. tiene %s años en la empresa", this.nombre, this.email, this.antiguedad);
     }
 }

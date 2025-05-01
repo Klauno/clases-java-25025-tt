@@ -1,58 +1,54 @@
 package techlab.clases.c5;
 
 public class Producto {
-    // Atributos
-    private String nombre;
-    private double precio;
-    private int stock;
+    // descripcion (atributos)
+    String nombre;
+    double precio;
+    int stock;
 
-    // Constructor
-    public Producto(String nombre, double precio, int stock) {
-        this.nombre = nombre;
+    // constructores
+    public Producto(){}
+
+    public Producto(String nombreProducto){
+        this.nombre = nombreProducto;
+        this.precio = 0;
+        this.stock = 20;
+    }
+
+    public Producto(String nombreProducto, double precio){
+        this.nombre = nombreProducto;
         this.precio = precio;
-        this.stock = stock;
+        this.stock = 20;
     }
 
-    // Método para mostrar información del producto
-    public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Precio: $" + precio);
-        System.out.println("Stock: " + stock);
+    // funcionamiento (metodos)
+    void descontarStock(){
+        // comportamiento para descontar stock
+        System.out.println("descontando stock....");
     }
 
-    // Método para aplicar un descuento del 10% al precio
-    public void aplicarDescuento() {
-        double descuento = precio * 0.10; // 10% del precio
-        precio -= descuento; // Reducir el precio
+    void reporteProducto(){
+        System.out.println("El producto " + nombre + " vale " + precio + "$ cada unidad");
+        System.out.println("Stock actual: " + stock);
     }
 
-    // Método main para probar
-    public static void main(String[] args) {
-        // Crear productos con distintos precios
-        Producto producto1 = new Producto("Laptop", 1200.50, 10);
-        Producto producto2 = new Producto("Mouse", 25.00, 50);
-        Producto producto3 = new Producto("Teclado", 45.99, 30);
+    double precioConDescuento(){
+        return precio  - precio * 0.2;
+    }
 
-        // Mostrar info antes del descuento
-        System.out.println("Antes del descuento:");
-        producto1.mostrarInformacion();
-        System.out.println();
-        producto2.mostrarInformacion();
-        System.out.println();
-        producto3.mostrarInformacion();
-        System.out.println();
+    String nameCapitalize(){
+        String textoMinuscula = nombre.toLowerCase();
+        String textoSinEspacios = textoMinuscula.trim();
+        // dividimos en palabras el texto
+        String[] palabras = textoSinEspacios.split(" ");
+        String resultado = "";
 
-        // Aplicar descuento del 10%
-        producto1.aplicarDescuento();
-        producto2.aplicarDescuento();
-        producto3.aplicarDescuento();
+        for (int i = 0; i < palabras.length; i++) {
+            String palabra = palabras[i];
 
-        // Mostrar info después del descuento
-        System.out.println("Después del descuento del 10%:");
-        producto1.mostrarInformacion();
-        System.out.println();
-        producto2.mostrarInformacion();
-        System.out.println();
-        producto3.mostrarInformacion();
+            resultado += palabra.toUpperCase().charAt(0) + palabra.substring(1) + " ";
+        }
+
+        return resultado;
     }
 }
